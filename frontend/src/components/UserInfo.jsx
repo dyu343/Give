@@ -5,10 +5,18 @@
  */
 import React from "react";
 import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfo() {
   // Get the authenticated user from context
   const { user } = useAuth();
+
+  const navigate = useNavigate();
+
+  // Navigates to /profile.
+  const goToProfile = () => {
+    navigate('/profile');
+  };
 
   // Extract display name, username, and profile picture from user object
   // displayName: user's display name or fallback to 'User'
@@ -43,7 +51,7 @@ export default function UserInfo() {
         </div>
         <div>
           {/* Edit Profile button (no functionality yet) */}
-          <button className="text-[0.6rem] text-black-200">Edit Profile</button>
+          <button className="text-[0.6rem] text-black-200" onClick={goToProfile}>Edit Profile</button>
         </div>
       </div>
     </div>

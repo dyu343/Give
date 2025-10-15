@@ -12,6 +12,7 @@ import {
 import "./styles/App.css";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile"
 import CreateAccount from "./pages/CreateAccount";
 import { AuthProvider } from './contexts/AuthContext';
 import RequireAuth from './components/RequireAuth';
@@ -82,6 +83,10 @@ function App() {
       {
         path: "/group",
         element: <RequireAuth><Group postData={postData} /></RequireAuth>,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/group/:groupId",
