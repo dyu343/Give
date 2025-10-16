@@ -6,16 +6,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../contexts/AuthContext';
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom";
-=======
 import logoutUser from '../auth/logout';
->>>>>>> a36875d64d4af5ee824b4a73369a875fc2faadd8
 
 export default function UserInfo() {
   // Get the authenticated user from context
   const { user } = useAuth();
-  const navigate = useNavigate();
   const [loggingOut, setLoggingOut] = useState(false);
 
   const navigate = useNavigate();
@@ -70,10 +65,7 @@ export default function UserInfo() {
         </div>
         <div className="flex items-center gap-3">
           {/* Edit Profile button (no functionality yet) */}
-<<<<<<< HEAD
           <button className="text-[0.6rem] text-black-200" onClick={goToProfile}>Edit Profile</button>
-=======
-          <button className="text-[0.6rem] text-black-200">Edit Profile</button>
           {/* Logout button triggers auth cleanup and navigation */}
           <button
             type="button"
@@ -83,7 +75,6 @@ export default function UserInfo() {
           >
             {loggingOut ? 'Logging out...' : 'Log Out'}
           </button>
->>>>>>> a36875d64d4af5ee824b4a73369a875fc2faadd8
         </div>
       </div>
     </div>

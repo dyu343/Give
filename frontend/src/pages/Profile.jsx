@@ -5,8 +5,9 @@ import ProfileContainer from "../components/ProfileContainer";
 import NavBar from "../components/NavBar";
 
 const Profile = () => {
+
   return (
-    <div className="w-3/4 h-screen mx-auto">
+    <div className="w-[100%] h-screen mx-auto">
       <NavBar />
       <ProfileContainer center={
         <div>
