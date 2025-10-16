@@ -3,13 +3,20 @@
  *
  * @returns {JSX.Element} The rendered component.
  */
-import React from "react";
-import { useAuth } from '../contexts/AuthContext';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../contexts/AuthContext';
+<<<<<<< HEAD
+import { useNavigate } from "react-router-dom";
+=======
+import logoutUser from '../auth/logout';
+>>>>>>> a36875d64d4af5ee824b4a73369a875fc2faadd8
 
 export default function UserInfo() {
   // Get the authenticated user from context
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const [loggingOut, setLoggingOut] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,6 +32,18 @@ export default function UserInfo() {
   const username = user?.email ? user.email.split('@')[0] : (user?.uid || 'username');
   // profilePic: user's photoURL or fallback to default profile image
   const profilePic = user?.photoURL || '/images/noPfp.jpg';
+
+  // Logout handler triggers Firebase sign out, clears storage, and redirects home
+  const handleLogout = async () => {
+    if (loggingOut) return;
+    setLoggingOut(true);
+    try {
+      await logoutUser();
+    } finally {
+      setLoggingOut(false);
+      navigate('/');
+    }
+  };
 
   return (
     // Main container for user info
@@ -49,9 +68,22 @@ export default function UserInfo() {
             @{username}
           </p>
         </div>
-        <div>
+        <div className="flex items-center gap-3">
           {/* Edit Profile button (no functionality yet) */}
+<<<<<<< HEAD
           <button className="text-[0.6rem] text-black-200" onClick={goToProfile}>Edit Profile</button>
+=======
+          <button className="text-[0.6rem] text-black-200">Edit Profile</button>
+          {/* Logout button triggers auth cleanup and navigation */}
+          <button
+            type="button"
+            onClick={handleLogout}
+            disabled={loggingOut}
+            className="text-[0.6rem] text-red-500 hover:text-red-600 disabled:opacity-60 transition-colors"
+          >
+            {loggingOut ? 'Logging out...' : 'Log Out'}
+          </button>
+>>>>>>> a36875d64d4af5ee824b4a73369a875fc2faadd8
         </div>
       </div>
     </div>
