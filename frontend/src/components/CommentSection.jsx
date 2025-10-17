@@ -1,9 +1,11 @@
 
+import HideCommentsButton from "./HideCommentsButton";
 
-
-const CommentSection = ({ post }) => {
+const CommentSection = ({ post, shownComments, setShownComments }) => {
   return (
-    <div className="">HIII</div>
+    <>
+      <div className="">HIII</div>
+    </>
   );
 };
 

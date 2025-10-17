@@ -23,18 +23,14 @@ const Post = ({ user, group, post }) => {
   return (
     // Main post container with rounded corners and background
     <div className="relative w-full rounded-3xl p-4 bg-backgroundGrey flex flex-col items-center">
-    {!commentsShown && (
-      <>
-          {/* User information section - displays author and group context */}
-          <UserCard user={user} group={group} />
-          {/* Post content section - displays text, images, polls, and tags */}
-          <PostData post={post} />
-          <ShowCommentsButton commentsShown={commentsShown} setShownComments={setShownComments} />
-      </>
-    )}
+    {/* User information section - displays author and group context */}
+    <UserCard user={user} group={group} />
+    {/* Post content section - displays text, images, polls, and tags */}
+    <PostData post={post} />
+    <ShowCommentsButton commentsShown={commentsShown} setShownComments={setShownComments} />
 
     {commentsShown && (
-      <CommentSection post={post} />
+      <CommentSection post={post} shownComments={commentsShown} setShownComments={setShownComments} />
     )}
 
     </div>
