@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UserCard from "./UserCard";
 import PostData from "./PostData";
 import PollBox from "./PollBox";
+import ShowCommentsButton from "./ShowCommentsButton";
 
 /**
  * Post Component
@@ -27,11 +28,9 @@ const Post = ({ user, group, post }) => {
 
       {/* Post content section - displays text, images, polls, and tags */}
       <PostData post={post} />
-      <button onClick={onCommentClick} className="rounded-full shadow-lg px-1 py-1 flex items-center justify-center hover:shadow-2xl transition-shadow">
-        <span className="text-black font-semibold">
-          Show Comments
-          </span>
-      </button>
+
+      <ShowCommentsButton initialShown={false} onToggle={(shown) => console.log("Comments shown:", shown)} />
+
     </div>
   );
 };
