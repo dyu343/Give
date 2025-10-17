@@ -15,6 +15,10 @@ import PollBox from "./PollBox";
  * @param {Object} post - Post object containing the main content data
  */
 const Post = ({ user, group, post }) => {
+  const onCommentClick = () => {
+    console.log("Show Comments clicked");
+  }
+
   return (
     // Main post container with rounded corners and background
     <div className="w-full rounded-3xl p-4 bg-backgroundGrey flex flex-col items-center">
@@ -23,6 +27,11 @@ const Post = ({ user, group, post }) => {
 
       {/* Post content section - displays text, images, polls, and tags */}
       <PostData post={post} />
+      <button onClick={onCommentClick} className="rounded-full shadow-lg px-1 py-1 flex items-center justify-center hover:shadow-2xl transition-shadow">
+        <span className="text-black font-semibold">
+          Show Comments
+          </span>
+      </button>
     </div>
   );
 };
