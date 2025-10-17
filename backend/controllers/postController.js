@@ -25,8 +25,7 @@ exports.createPost = async (req, res) => {
         polls = [],
       group,
       expiryOption = "none", // "none" | "10s" | "1d" | "7d" | "30d"
-
-
+      comments = [],
     } = req.body;
 
 
@@ -68,6 +67,14 @@ exports.createPost = async (req, res) => {
         : [],
         group,
       voters: [],
+      comments: Array.isArray(comments)
+        ? comments
+            .map((c) => ({
+              displayName: String(c.displayName || "").trim(),
+              comment: String(c.comment || "").trim(),
+            }))
+            .filter((c) => c.displayName && c.comment)
+        : [],
       expiryOption,
       expiresAt, // used for countdown, filtering, and optional TTL deletion
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
