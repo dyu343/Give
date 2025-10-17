@@ -16,9 +16,8 @@ import ShowCommentsButton from "./ShowCommentsButton";
  * @param {Object} post - Post object containing the main content data
  */
 const Post = ({ user, group, post }) => {
-  const onCommentClick = () => {
-    console.log("Show Comments clicked");
-  }
+
+  const [commentsShown, setShownComments] = React.useState(false);
 
   return (
     // Main post container with rounded corners and background
@@ -29,7 +28,7 @@ const Post = ({ user, group, post }) => {
       {/* Post content section - displays text, images, polls, and tags */}
       <PostData post={post} />
 
-      <ShowCommentsButton initialShown={false} onToggle={(shown) => console.log("Comments shown:", shown)} />
+      <ShowCommentsButton commentsShown={commentsShown} setShownComments={setShownComments} />
 
     </div>
   );
