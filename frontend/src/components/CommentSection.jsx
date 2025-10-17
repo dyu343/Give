@@ -1,5 +1,4 @@
-
-import HideCommentsButton from "./HideCommentsButton";
+import React from "react";
 
 const CommentSection = ({ post, shownComments, setShownComments }) => {
   return (
